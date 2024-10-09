@@ -35,9 +35,22 @@ export class UserRegistrationService {
 
   // Get ALL movies Endpoint
   // needs token
-  public getMovies(): Observable<any> {
-    return this.http.get(apiUrl + 'movies').pipe(catchError(this.handleError));
+  public getAllMovies(): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .get(apiUrl + 'movies', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
+  // Non-typed response extraction
+  private extractResponseData(res: any): any {
+    const body = res;
+    return body || {};
+  }
+
   // Get SINGLE movie by title Endpoint
   // needs token
   public getSingleMovie(title: string): Observable<any> {
