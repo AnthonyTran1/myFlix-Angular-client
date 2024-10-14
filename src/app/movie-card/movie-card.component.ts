@@ -78,8 +78,11 @@ export class MovieCardComponent {
   }
 
   goToProfile(): void {
-    console.log('entering profile');
     this.router.navigate(['profile']);
-    // console.log('entered profile');
+  }
+
+  goToWelcome(): void {
+    this.router.navigate(['welcome']);
+    localStorage.clear();
   }
 }

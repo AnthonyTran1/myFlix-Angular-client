@@ -10,7 +10,14 @@
 >
   Profile
 </button>
-<button mat-raised-button color="primary" style="margin: 10px">Log Out</button>
+<button
+  mat-raised-button
+  color="primary"
+  style="margin: 10px"
+  (click)="goToWelcome()"
+>
+  Log Out
+</button>
 
 <div class="movie-container">
   <mat-card *ngFor="let movie of movies" style="width: 15%">
