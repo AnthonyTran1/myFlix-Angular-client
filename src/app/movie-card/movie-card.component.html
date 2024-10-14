@@ -12,8 +12,8 @@
 </button>
 <button mat-raised-button color="primary" style="margin: 10px">Log Out</button>
 
-<div style="display: flex">
-  <mat-card *ngFor="let movie of movies" style="flex: 1 1 auto; width: 15%">
+<div class="movie-container">
+  <mat-card *ngFor="let movie of movies" style="width: 15%">
     <mat-card-header>
       <mat-card-title>{{ movie.Title }}</mat-card-title>
       <mat-card-subtitle
@@ -35,7 +35,7 @@
       <button mat-button color="primary" (click)="getSypnosis(movie.Title)">
         Synopsis
       </button>
-      <mat-icon>favorite_border</mat-icon>
+      <mat-icon (click)="addFavoriteMovie(movie)">favorite_border</mat-icon>
     </mat-card-actions>
   </mat-card>
 </div>

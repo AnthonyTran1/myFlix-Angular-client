@@ -65,6 +65,18 @@ export class MovieCardComponent {
     });
   }
 
+  addFavoriteMovie(movie: any): void {
+    let user: any = localStorage.getItem('user');
+    let username: any = JSON.parse(user).Username;
+    console.log(typeof username);
+    console.log(typeof movie._id);
+    this.fetchApiData
+      .addFavoriteMovie(username, movie)
+      .subscribe((resp: any) => {
+        console.log('added movie');
+      });
+  }
+
   goToProfile(): void {
     console.log('entering profile');
     this.router.navigate(['profile']);

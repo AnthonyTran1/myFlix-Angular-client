@@ -115,20 +115,43 @@ export class UserRegistrationService {
 
   // Add movie to User's favorite movie list Endpoint
   // check api parameters to make sure to match spelling and capitalization
-  // needs token
   public addFavoriteMovie(username: string, movie: any): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .post(apiUrl + 'users/' + username + '/movies/' + movie.ID, movie)
-      .pipe(catchError(this.handleError));
+      .post(apiUrl + 'users/' + username + '/movies/' + movie._id, movie, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
+  }
+
+  // remove movie to User's favorite movie list Endpoint
+  // check api parameters to make sure to match spelling and capitalization
+  public removeFavoriteMovie(username: string, movie: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    return this.http
+      .delete(apiUrl + 'users/' + username + '/movies/' + movie._id, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Update/edit user information Endpoint
   // needs token
   // check api parameters to make sure to match spelling and capitalization
-  public editUser(userDetails: any): Observable<any> {
+  public editUser(username: string, userDetails: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    console.log(userDetails);
     return this.http
-      .put(apiUrl + 'users/' + userDetails.username, userDetails)
-      .pipe(catchError(this.handleError));
+      .put(apiUrl + 'users/' + username, userDetails, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // DELETE User Endpoint
