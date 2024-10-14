@@ -54,42 +54,63 @@ export class UserRegistrationService {
   // Get SINGLE movie by title Endpoint
   // needs token
   public getSingleMovie(title: string): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'movies/' + title)
-      .pipe(catchError(this.handleError));
+      .get(apiUrl + 'movies/' + title, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get Director information by name Endpoint
-  // needs token
   public getDirector(director: string): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'movies/directors/' + director)
-      .pipe(catchError(this.handleError));
+      .get(apiUrl + 'movies/directors/' + director, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get list of movies by genre Endpoint
-  // needs token
   public getGenre(genre: string): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'movies/genres/' + genre)
-      .pipe(catchError(this.handleError));
+      .get(apiUrl + 'movies/genres/' + genre, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get User by username Endpoint
-  // needs token
   public getUser(username: string): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'users/' + username)
-      .pipe(catchError(this.handleError));
+      .get(apiUrl + 'users/' + username, {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Get user's list of favorite movies Endpoint
   // did not originally have an endpoint for this
-  // needs token
   public getFavoriteMovies(): Observable<any> {
+    const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + 'users/favorites/')
-      .pipe(catchError(this.handleError));
+      .get(apiUrl + 'users/favorites/', {
+        headers: new HttpHeaders({
+          Authorization: 'Bearer ' + token,
+        }),
+      })
+      .pipe(map(this.extractResponseData), catchError(this.handleError));
   }
 
   // Add movie to User's favorite movie list Endpoint
