@@ -3,3 +3,11 @@
   flex-wrap: wrap;
   gap: 20px;
 }
+
+.movie-card {
+  text-overflow: ellipsis;
+  min-width: 350px;
+  overflow: hidden;
+  padding: 10px;
+  margin-left: 10px;
+}

@@ -6,6 +6,7 @@ import { MovieDirectorComponent } from '../movie-director/movie-director.compone
 import { MovieSynopsisComponent } from '../movie-synopsis/movie-synopsis.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MovieFavoriteComponent } from '../movie-favorite/movie-favorite.component';
 
 @Component({
   selector: 'app-movie-card',
@@ -68,12 +69,14 @@ export class MovieCardComponent {
   addFavoriteMovie(movie: any): void {
     let user: any = localStorage.getItem('user');
     let username: any = JSON.parse(user).Username;
-    console.log(typeof username);
-    console.log(typeof movie._id);
     this.fetchApiData
       .addFavoriteMovie(username, movie)
       .subscribe((resp: any) => {
         console.log('added movie');
+        this.dialog.open(MovieFavoriteComponent, {
+          width: '280px',
+          data: resp.Description,
+        });
       });
   }
 

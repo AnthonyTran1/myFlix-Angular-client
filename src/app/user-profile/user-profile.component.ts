@@ -19,6 +19,7 @@ import { UserRegistrationService } from '../fetch-api-data.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Router } from '@angular/router';
+import { MovieUnfavoriteComponent } from '../movie-unfavorite/movie-unfavorite.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -140,6 +141,10 @@ export class UserProfileComponent {
       .removeFavoriteMovie(this.username, movie)
       .subscribe((resp: any) => {
         console.log('removed movie');
+        this.dialog.open(MovieUnfavoriteComponent, {
+          width: '280px',
+          data: resp.Description,
+        });
         this.getMovies();
         this.router.navigate(['profile']);
       });

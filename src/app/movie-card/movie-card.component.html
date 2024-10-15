@@ -20,7 +20,7 @@
 </button>
 
 <div class="movie-container">
-  <mat-card *ngFor="let movie of movies" style="width: 15%">
+  <mat-card *ngFor="let movie of movies" style="width: 20%" class="movie-card">
     <mat-card-header>
       <mat-card-title>{{ movie.Title }}</mat-card-title>
       <mat-card-subtitle
@@ -42,7 +42,9 @@
       <button mat-button color="primary" (click)="getSypnosis(movie.Title)">
         Synopsis
       </button>
-      <mat-icon (click)="addFavoriteMovie(movie)">favorite_border</mat-icon>
+      <button mat-button color="primary" (click)="addFavoriteMovie(movie)">
+        Favorite
+      </button>
     </mat-card-actions>
   </mat-card>
 </div>
