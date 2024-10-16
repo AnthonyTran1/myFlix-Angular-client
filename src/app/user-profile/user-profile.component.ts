@@ -31,14 +31,13 @@ export class UserProfileComponent {
   userFav: any = [];
   favoriteMovies: any = [];
   user: any = localStorage.getItem('user');
-  // username: any = JSON.parse(this.user).Username;
-  // email: any = JSON.parse(this.user).Email;
-  // birthday: any = JSON.parse(this.user).Birthday;
-  // password: any = JSON.parse(this.user).Password;
-  username: any = JSON.parse(this.user).Username;
+  username: any = localStorage.getItem('username');
   email: any;
   birthday: any;
   password: any;
+
+  localstorageUser: any = localStorage.getItem('username');
+  // local2: any = JSON.parse(this.localstorageUser);
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
@@ -68,13 +67,11 @@ export class UserProfileComponent {
         this.favoriteMovies = resp.filter((m: any) => {
           for (let favM of this.userFav) {
             if (favM === m._id) {
-              console.log('it hit');
               return true;
             }
           }
           return false;
         });
-        console.log(this.favoriteMovies);
         return this.favoriteMovies;
       });
     });
@@ -89,6 +86,12 @@ export class UserProfileComponent {
       .editUser(this.username, this.userData)
       .subscribe((response) => {
         console.log('Update Complete');
+        localStorage.setItem('username', this.userData.Username);
+
+        this.username = this.userData.Username;
+        this.password = this.userData.Password;
+        this.birthday = this.userData.Birthday;
+        this.email = this.userData.Email;
         this.getUserInfo();
       });
   }
@@ -104,9 +107,7 @@ export class UserProfileComponent {
   }
 
   getGenre(genre: string): void {
-    console.log('hit 1');
     this.fetchApiData.getGenre(genre).subscribe((resp: any) => {
-      console.log('hit 2');
       this.dialog.open(MovieGenreComponent, {
         width: '280px',
         data: resp,
@@ -115,9 +116,7 @@ export class UserProfileComponent {
   }
 
   getDirector(director: string): void {
-    console.log('hit 1');
     this.fetchApiData.getDirector(director).subscribe((resp: any) => {
-      console.log('hit 2');
       this.dialog.open(MovieDirectorComponent, {
         width: '280px',
         data: resp,
@@ -126,9 +125,7 @@ export class UserProfileComponent {
   }
 
   getSypnosis(title: string): void {
-    console.log('hit 1');
     this.fetchApiData.getSingleMovie(title).subscribe((resp: any) => {
-      console.log('hit 2');
       this.dialog.open(MovieSynopsisComponent, {
         width: '280px',
         data: resp.Description,
@@ -140,7 +137,6 @@ export class UserProfileComponent {
     this.fetchApiData
       .removeFavoriteMovie(this.username, movie)
       .subscribe((resp: any) => {
-        console.log('removed movie');
         this.dialog.open(MovieUnfavoriteComponent, {
           width: '280px',
           data: resp.Description,
