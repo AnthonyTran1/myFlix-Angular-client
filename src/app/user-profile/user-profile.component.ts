@@ -37,15 +37,19 @@ export class UserProfileComponent {
   password: any;
 
   localstorageUser: any = localStorage.getItem('username');
-  // local2: any = JSON.parse(this.localstorageUser);
 
   @Input() userData = { Username: '', Password: '', Email: '', Birthday: '' };
 
+  /**
+   * Creates an instance of the UserProfileComponent.
+   * @param fetchApiData - Service to interact with the API
+   * @param dialog - ...
+   * @param snackBar - Service to show notifications to the user
+   * @param router - ...
+   */
+
   constructor(
-    // @Inject(MAT_DIALOG_DATA)
-    // public data: {},
     public fetchApiData: UserRegistrationService,
-    // public dialogRef: MatDialogRef<UserProfileComponent>,
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     private router: Router

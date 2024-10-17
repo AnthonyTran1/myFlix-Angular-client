@@ -18,6 +18,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-genre.component.scss'],
 })
 export class MovieGenreComponent {
+  /**
+   * Creates an instance of the MovieGenreComponent.
+   * @param fetchApiData - Service to interact with the API
+   * @param dialogRef - ...
+   * @param dialog - ...
+   * @param snackBar - Service to show notifications to the user
+   * @param router - ...
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {

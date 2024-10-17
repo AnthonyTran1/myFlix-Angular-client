@@ -9,6 +9,10 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./welcome-page.component.scss'],
 })
 export class WelcomePageComponent implements OnInit {
+  /**
+   * Creates an instance of the WelcomePageComponent.
+   * @param dialogRef - ...
+   */
   constructor(public dialog: MatDialog) {}
   ngOnInit(): void {}
   openUserRegistrationDialog(): void {

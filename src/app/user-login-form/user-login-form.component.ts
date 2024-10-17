@@ -19,7 +19,13 @@ import { Router } from '@angular/router';
 })
 export class UserLoginFormComponent implements OnInit {
   @Input() userData = { Username: '', Password: '' };
-
+  /**
+   * Creates an instance of the UserLoginFormComponent.
+   * @param fetchApiData - Service to interact with the API
+   * @param dialogRef - ...
+   * @param snackBar - Service to show notifications to the user
+   * @param router - ...
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,

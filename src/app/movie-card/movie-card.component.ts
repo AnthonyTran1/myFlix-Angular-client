@@ -15,6 +15,13 @@ import { MovieFavoriteComponent } from '../movie-favorite/movie-favorite.compone
 })
 export class MovieCardComponent {
   movies: any[] = [];
+
+  /**
+   * Creates an instance of the UserRegistrationComponent.
+   * @param fetchApiData - Service to interact with the API
+   * @param dialog - ...
+   * @param router - ...
+   */
   constructor(
     public fetchApiData: UserRegistrationService,
     public dialog: MatDialog,

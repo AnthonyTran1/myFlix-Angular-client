@@ -18,6 +18,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./movie-favorite.component.scss'],
 })
 export class MovieFavoriteComponent {
+  /**
+   * Creates an instance of the MovieFavoriteComponent.
+   * @param fetchApiData - Service to interact with the API
+   * @param dialogRef - ...
+   * @param dialog - ...
+   * @param snackBar - Service to show notifications to the user
+   * @param router - ...
+   */
   constructor(
     @Inject(MAT_DIALOG_DATA)
     public data: {
