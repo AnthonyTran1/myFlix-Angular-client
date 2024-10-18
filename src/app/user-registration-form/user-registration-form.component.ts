@@ -21,7 +21,7 @@ export class UserRegistrationFormComponent implements OnInit {
   /**
    * Creates an instance of the UserRegistrationFormComponent.
    * @param fetchApiData - Service to interact with the API
-   * @param dialogRef - ...
+   * @param dialogRef - Importing the dialogRef to display a modal
    * @param snackBar - Service to show notifications to the user
    */
 

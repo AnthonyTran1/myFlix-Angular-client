@@ -11,7 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class WelcomePageComponent implements OnInit {
   /**
    * Creates an instance of the WelcomePageComponent.
-   * @param dialogRef - ...
+   * @param dialogRef - Importing the dialogRef to display a modal
    */
   constructor(public dialog: MatDialog) {}
   ngOnInit(): void {}

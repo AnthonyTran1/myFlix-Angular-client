@@ -21,10 +21,10 @@ export class MovieSynopsisComponent {
   /**
    * Creates an instance of the MovieSynopsisComponent.
    * @param fetchApiData - Service to interact with the API
-   * @param dialogRef - ...
-   * @param dialog - ...
+   * @param dialogRef - Importing the dialogRef to display a modal
+   * @param dialog - Importing the MatDialog to display a modal
    * @param snackBar - Service to show notifications to the user
-   * @param router - ...
+   * @param router - Importing list of navigiational paths within the app
    */
   constructor(
     @Inject(MAT_DIALOG_DATA)

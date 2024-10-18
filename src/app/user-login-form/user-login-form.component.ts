@@ -22,9 +22,9 @@ export class UserLoginFormComponent implements OnInit {
   /**
    * Creates an instance of the UserLoginFormComponent.
    * @param fetchApiData - Service to interact with the API
-   * @param dialogRef - ...
+   * @param dialogRef - Importing the MatDialog to display a modal
    * @param snackBar - Service to show notifications to the user
-   * @param router - ...
+   * @param router - Importing list of navigiational paths within the app
    */
   constructor(
     public fetchApiData: UserRegistrationService,

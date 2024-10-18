@@ -19,8 +19,8 @@ export class MovieCardComponent {
   /**
    * Creates an instance of the UserRegistrationComponent.
    * @param fetchApiData - Service to interact with the API
-   * @param dialog - ...
-   * @param router - ...
+   * @param dialog - Importing the MatDialog to display a modal
+   * @param router - Importing list of navigiational paths within the app
    */
   constructor(
     public fetchApiData: UserRegistrationService,
